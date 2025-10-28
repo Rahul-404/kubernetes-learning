@@ -33,7 +33,7 @@ theme:
 
 nav:
   - Home: index.md
-  - Chapter 04: Chapter-04/README.md
+  - Chapter 04: chapter-4.md
 
 extra_css:
   - css/custom.css
