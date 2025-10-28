@@ -1,0 +1,67 @@
+/* ============================= */
+/* Page background and main area */
+/* ============================= */
+.md-content,
+.md-main,
+.md-footer {
+    background-color: #1A1A1A !important; /* Dark background */
+    color: #e0e0e0 !important;            /* Light text for readability */
+}
+
+/* ============================= */
+/* Header (top navigation bar) */
+/* ============================= */
+.md-header {
+    background-color: #326CE5 !important; /* Kubernetes blue */
+    color: #ffffff !important;            /* Ensure header text is white */
+}
+
+/* Header text and links */
+.md-header .md-header-nav__title,
+.md-header .md-header-nav__link {
+    color: #ffffff !important;
+}
+
+/* Hover effect for header nav links */
+.md-header .md-header-nav__link:hover {
+    color: #fffa !important; /* Light text on hover */
+}
+
+/* ============================= */
+/* Navigation Tabs & Sub-tabs - Kubernetes Blue */
+/* ============================= */
+
+/* Top-level tabs */
+.md-nav.md-nav--tabs .md-nav__link {
+    background-color: #326CE5 !important;   /* Kubernetes blue */
+    color: #ffffff !important;
+    border-radius: 4px 4px 0 0 !important;  /* Rounded top corners */
+}
+
+/* Hover effect for top-level tabs */
+.md-nav.md-nav--tabs .md-nav__link:hover {
+    background-color: #2b5cc0 !important;   /* Slightly darker blue */
+}
+
+/* Active top-level tab */
+.md-nav.md-nav--tabs .md-nav__link.md-nav__link--active {
+    background-color: #1f45a3 !important;   /* Darker blue for active tab */
+    color: #ffffff !important;
+}
+
+/* Sub-tabs / child tabs */
+.md-nav.md-nav--tabs .md-nav__list .md-nav__link {
+    background-color: #326CE5 !important;   /* Kubernetes blue for sub-tabs */
+    color: #ffffff !important;
+}
+
+/* Hover for sub-tabs */
+.md-nav.md-nav--tabs .md-nav__list .md-nav__link:hover {
+    background-color: #2b5cc0 !important;
+}
+
+/* Active sub-tab */
+.md-nav.md-nav--tabs .md-nav__list .md-nav__link.md-nav__link--active {
+    background-color: #1f45a3 !important;
+    color: #ffffff !important;
+}
