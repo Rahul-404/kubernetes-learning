@@ -1,0 +1,509 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/Rahul-404/kubernetes-learning/chapter-5/">
+      
+      
+        <link rel="prev" href="../chapter-4/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Chapter 05 - Kubernetes Learnings</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i%7CRed+Hat+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Merriweather Sans";--md-code-font:"Red Hat Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#what-is-kubernetes-kubernetes-architecture-explained" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Kubernetes Learnings" class="md-header__button md-logo" aria-label="Kubernetes Learnings" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Kubernetes Learnings
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 05
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Rahul-404/kubernetes-learning/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kubernetes-learning
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Kubernetes Learnings" class="md-nav__button md-logo" aria-label="Kubernetes Learnings" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Kubernetes Learnings
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Rahul-404/kubernetes-learning/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kubernetes-learning
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 04
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 05
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="what-is-kubernetes-kubernetes-architecture-explained">What is Kubernetes - Kubernetes Architecture Explained</h1>
+<p><img alt="Page-1" src="../assets/chapter-5-assets/Page-1.jpg" /></p>
+<p>Let's have a look at the kubernetes architecture this might look a little overwhelming at the beginning but if you reaches till the end of this blog I'm sure you will be able to understand everything in depth whatever we'll discuss so on the left side if you see we have a control plane or a master node and on the right side we have a couple of worker nodes now what exactly is a node node is nothing but a virtual machine so so a virtual machine and on which we run our components we run our workloads or we run our uh other administrative components is considered as a node in kubernetes right so this is just another name for a VM if you see we have one for control plane and a couple of virtual machine or nodes for worker nodes now let's understand what exactly is a control plane or Master node.</p>
+<p>so A control plane or a master node is a virtual machine or a node that host many administrative components now these components have their own specific purpose and they helps you run your cluster smoothly so basically consider this as a board of director in a company that helps you run the company but they are not doing the actual ground work right they provide instructions to other teams other managers other team leads and other uh resources to work on their behalf right so these are the top level management and on the right side we have worker notes in those worker notes we have the actual working Happening Now idea of running your workload on kubernetes why do we need kubernetes right so we use kubernetes so that we can host our application on the containers that's that's the basic idea like why do you use it those containers run on the worker nodes because that is where actual work is happening but who is instructing kubernetes to to do that work it's the control pane or Master node with the help of different components we'll look at all these different components and you see on the worker node we have something called as pod now what exactly is a pod so look at this diagram on the right side let's say you have a container running it's an enginex container we have already seen what a container is so let's say you have an enginex container running and we cannot run the container in a kubernetes just in its own shell right so we have to encapsulate that in something called as a pod so consider this when there is a baby in the womb it requires a sack to protect the baby right so that's the Pod is that sack and in that pod you can have one or more containers ideally like you only have one container per pod but in some cases you have multiple containers as well these containers are helper containers or sometimes monitoring agents sometimes init containers we'll look at that in in one of the later section but for now just understand you can have one or more container inside a pod and pod is the smallest Deployable unit in kubernetes right so you have uh deployments replicas at Services there will be a lot of other objects that we'll be discussing in detail but for this blog please understand that pod is something that helps you run a container. it encapsulate a container or one or more container in its own so that those container share the resources of a pod and then you run the Pod okay so once that pod is up and running your application inside that container will be up and running it'll be healthy now let's look at these components all of these components one by one okay.</p>
+<p><img alt="Page-2" src="../assets/chapter-5-assets/Page-2.jpg" /></p>
+<p>so first we have nodes this we have already discussed uh on the left side we have a control plane or Master node in a high availability in a production environment we usually have more than one notes for the control plane as well to support High availability we'll look that later on but for now just understand worker nodes where your workloads are running your containers your ports your uh all the services and everything will be running and your master node or control plane node is where your control plane components will be running these components like whatever we have seen like API server Schuler SD controller manager these are collectively known as control plane components </p>
+<p><img alt="Page-3" src="../assets/chapter-5-assets/Page-3.jpg" /></p>
+<p>here is your control plane </p>
+<p><strong>API server</strong> is the center of control plane that means any incoming request from the client will first reach to API server and then API server will interact with other components on its behalf right so any request that comes from outside it will first go to API server so that's the main entry point inside a kubernetes cluster </p>
+<p>okay now </p>
+<p><img alt="Page-4" src="../assets/chapter-5-assets/Page-4.jpg" /></p>
+<p><strong>schedular</strong> is something that helps you schedule your workload so it received the request from API server okay so here is your API server let's say okay and the scheduler received the request from API server and then it let's say someone requested to schedule a pod right so the request is received by first API server and then API server forward that request to the scheduler to find a suitable node for that part in in a node there could be several constraints like um the CPU the available memory available uh dis storage and so on so those decisions are made by Schuler based on different factors based on are request and limits and there are many other things we'll look at that later but all those factors will be considered by schedular and then it finds a suitable node for that particular part right so that's what Schuler does. </p>
+<p>now we have another component which is controller manager so</p>
+<p><img alt="Page-5" src="../assets/chapter-5-assets/Page-5.jpg" /></p>
+<p><strong>controller manager</strong> is the component which is a combination of many different uh controllers right so we have a <em>node controller</em> we have a <em>namespace controller</em> we have a <em>deployment controller</em> so what this does and there are many other controllers as well so what these controllers does or what controller manager does is make sure that all the controllers are running fine and everything is uh monitored it it basically monitor the workload is basically monitor the kubernetes object and make sure it is up and healthy so let's say if a pod goes down it will monitor that particular pod it will keep re starting that pod because it is continuously monitoring that pod with the help of a controller so that's what controller manager does it makes sure your uh your workloads your uh nodes your deployments everything is up and healthy all the time</p>
+<p><img alt="Page-6" src="../assets/chapter-5-assets/Page-6.jpg" /></p>
+<p>then we have hcd so hcd is nothing but a key <strong>value data store</strong> right so key value data store like if you have not familiar with this term let me explain you a little bit what exactly is a key value data store so let's say you have a database and like uh rdbms a relational database which is in form of uh rows and columns right so let's say you have this row and then you have this row you have columns okay so this field is ID this field is name this field is let's say age this field is sex okay so this is your employee table I'm just going to add the details over here so this is your employee table you add all the details in different rows for one employee two employee three employee and so on but let's say we have another employee with the id2 okay and for this employee we have to add one more field which is let's say address over here right we cannot add the address unless we alter the table unless we add one more field over here which is address right why do we need to do that because relational database they have a fixed schema and every record in that table have to follow that schema right so you cannot add fields from your side for every single record so those were the thing that were complicated in relational database and for some use cases where we need to have some random fields or something that is a schema less we cannot follow rdbms right so so for that we have key value data store a key value data store which is schales which is a no SQL database and in that you store your values as per your needs in a document format so this document is generally you know a Json type format and you store your value in key value like let's say there is one record which says name p okay age 35 or 34 I'm I'm not sure and then address XYZ and so on so this particular record will be stored in a document as a Json format and it is in the form of key value pair that means it has a key and a value key and a value and so on right so as I was mentioning that at CD is a key value data store but what values does it store and why do we need to store the value values in that database so it stored everything every single information about the cluster it store cluster information it State um the details of Nod PS configuration secrets and every other relevant data in the key value data store whenever you make any changes in the cluster let's say you receive a request from the client and your API server apply that changes that change will be instantly updated in the at CD database so every single details are updated in the at CD database and only API server so we have API server over here only API server will interact with the at CD database and it will only have the authority to apply those changes in the at CD database at the same time uh the changes will be applied to the at CD database with from API server but at the same time if we have to retrieve any information from ATC database like let's say we want to know how many ports are running in the cluster currently so that instructions will also be retrieved by API server from the at CD database right so this is what it will do right so that's the main purpose of at CD database and it has to be available all the time in fact all the control plane components has to be available all the time and we'll be looking into more scenario based blogs dedicated to each of these components we'll be doing many Hands-On in the future as part of this series so don't worry about it for now I just wanted to give you a brief overview and some uh basic understanding of all the control plane components so these were those.</p>
+<p><img alt="Page-7" src="../assets/chapter-5-assets/Page-7.jpg" /> </p>
+<p>now we have two components running in your worker nodes one is a <strong>KUBE PROXY</strong> another one is a <strong>KUBELET</strong> so cuet is something that receives your instructions from your control plane node let's say this is your control plane or Master node and it has different components that we have seen so let's say you have your API server over here okay API server what it will do is it will sends the instruction to cuade to make some changes in the worker node and every worker node will have the cuade and Cube proxy running so cuade will receive the instruction from API server and then it will act upon that let's say cuet we receive the instruction to delete a pod right so it will go ahead and it will make the changes over here and then it will delete this particular pod right the Pod will be deleted and then it will provide the response as well okay it will go ahead to the API server and it will say the API server that yes this particular pod has been deleted and then API server will make that change in the at ETCD database right so this is what cuet does it is a node based agent and which receive the request from the API server and it enables the communication between you know what it did actually it enabled the communication between worker node and the control plane node right so that's what it did. </p>
+<p>the next component we have is <strong>kube proxy</strong> right so </p>
+<p><img alt="Page-8" src="../assets/chapter-5-assets/Page-8.jpg" /> </p>
+<p><strong>kube proxy</strong> is something that enables the networking within the node. it allows your pod to communicate with each other it basically creates some IP table rules and that enables the port to port networking and you know your port and services can communicate with each other with the help of kube proxy, so those were the main things. </p>
+<p><img alt="Page-9" src="../assets/chapter-5-assets/Page-9.svg" /> </p>
+<p>Now let me try to explain it with the help of an example like how the end to end flow will work uh in a kubernetes architecture. </p>
+<p>Let's say you have a user user an external client maybe a kubernetes administrator or someone from your devops team and we call it a user that user uses a client CLI utility called Cube CTL, so we'll see that later on, but just understand Cube CTL is a type of client that helps you interact with the cluster and its control plane components so that uh user basically what did did it uses that Cube CTL client and made a request with the API server.</p>
+<p>it use the kube CTL client now the request when uh the API server receives the request whatever request it is it will do a lot of things so it will you know I'll just write it on the right side it will first authenticate the request then whether this is a valid request if the user has certain permissions to do that so it authenticate the request and then it also validate the request whether this is a valid request like if it is even supported by kubernetes or the kube CTL client right so it does all those things. </p>
+<p>then uh let's say the request was to create the pod uh okay okay so we use a command such as </p>
+<ol>
+<li><code>kubectl create pod</code> </li>
+</ol>
+<p>and the details of the pod like uh it's image, port and many other details so we'll look at that later on but just understand for now the user sends this request to create a pod to the API server once the request is received by API server it does the basic checks it does the authentication it does the validation and so on and then it basically set that request to ETCD database okay </p>
+<ol>
+<li><code>create pod</code></li>
+</ol>
+<p>to create the pod now at ETCD database will not because it's a database it will not create the pod but what it will do is it will create an entry in the database that yes the Pod has been created okay so the request will be sent to ETCD database to add an entry inside the at ETCD database </p>
+<ol>
+<li><code>entry created</code></li>
+</ol>
+<p>now once you did that once the entry has been made then ETCD server sends the response back to the API server that yes the entry has been created.</p>
+<ol>
+<li>
+<p>then we have a scheduler running all the time right so scheduler is monitoring the control plane all the time </p>
+</li>
+<li>
+<p>scheduler finds that okay there is a pod that needs to be scheduled on a node right so it it finds that that yes I need to make that scheduling Arrangement so schedu basically says to API server that yes I found a pod I found a node okay and </p>
+</li>
+</ol>
+<p>go ahead and schedule the pod on this node okay now the scheduler made that request to the API server now the next part is to schedule the Pod right the Pod has not been scheduled we have the entry in the ETCD database scheduler found that we have a node available for this particular pod now it it only sends the instructions to the API server every component sends details or requested metadata to the API server and API server is the one who takes the decision </p>
+<ol>
+<li>
+<p>so then API server interacts with cuets okay let's say it found this particular node <code>node A</code> okay that's it schedule the part on this node so API server reach out to the cuet of this particular node "hey I have a job for you, schedule this pod on your node" receiving that request cuet will schedule the Pod right on this particular node and </p>
+</li>
+<li>
+<p>then it will send the detail back to API server that pod has been created Now API server uh will then </p>
+</li>
+<li>
+<p>add the entry in the database in the ETCD database that yes pod has been created now all the the work has been completed and </p>
+</li>
+<li>
+<p>then it finally sends the detail to the user that uh the part that you have requested has been created now okay so user will finally receive that request okay.</p>
+</li>
+</ol>
+<p>if let's say instead of create pod the request was to get the Pod to <strong>check how many pods are running in the node</strong> so what it will do okay API server will receive the request it will <strong>authenticate</strong> and <strong>validate</strong> the request okay once the request is validated it will get the information from ETCD database okay so user which is authenticated has requested how many pods are running in this particular name space so it will retrieve that detail from that database and it will send the response back to the user in this case it does not have to check in the cluster for the number of running Parts because this is a database with every single details stored in it so it just have to look inside the database and then it will return with the results so that's what it does </p>
+<p>to recap what have we done so we have seen it will first authenticate and validate the request and then it will retrieve and update the the data in SD right retrieve an update in ETCD then it will take instructions from scheduler which is continuously monitoring if there is any pending pod to be scheduled if there is any pending action item for me and once it found that so it will uh you know instruct API server to schedule that pod now it will also provide the node details right and once it has API server has the node details it will send the request to cuet okay I found a note and I see you have some uh resources I see you are the best fit out of the available nodes and go ahead and schedule this p on your node okay and then it will send the response back to API server I hope it is still visible uh yes okay we'll set the response back to API server and API server then send the response back to client okay so this is generally um the workflow that it takes and this is how it works but if you still have doubts um we'll be covering that in detail so don't worry about it we'll be looking at each of these component how it works and we'll simulate some failure scenarios so that you will know know where to look for if you're getting certain error or which component is responsible for doing this particular action and so on so everything will be clear but for now from a high level just try to understand the flow that it takes the basic purpose of each of these control plane components and uh the components that are running or work not such as kube proxy and kubelet so that's that's the basic overview of kuber it is architecture and I hope you found this blog valuable as well and let me know in the comment section what you think about it.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../chapter-4/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Chapter 04">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Chapter 04
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "header.autohide", "announce.dismiss", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
