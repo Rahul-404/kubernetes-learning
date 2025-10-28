@@ -1,5 +1,8 @@
 site_name: Kubernetes Learnings
-site_dir: site  # (optional) Output folder for the built site
+site_url: https://github.com/Rahul-404/kubernetes-learning/
+
+repo_url: https://github.com/Rahul-404/kubernetes-learning/
+repo_name: kubernetes-learning
 
 theme:
   name: "material"
