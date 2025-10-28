@@ -34,6 +34,7 @@ theme:
 nav:
   - Home: index.md
   - Chapter 04: chapter-4.md
+  - Chapter 05: chapter-5.md
 
 extra_css:
   - css/custom.css
