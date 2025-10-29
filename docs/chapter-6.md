@@ -27,8 +27,6 @@ In simple terms:
 - These nodes can be either **control plane** or **worker nodes**.
 - The setup is lightweight, fast, and perfect for learning.
 
-<!-- ![Kind Overview](./assets/page-1.jpg) -->
-
 ---
 
 ## 🧩 Prerequisites
@@ -98,7 +96,7 @@ kind create cluster \
   --image kindest/node:v1.29.4
 ```
 
-![Create Cluster](./assets/page-2.jpg)
+![Create Cluster](./assets/page-1.jpg)
 
 ✅ **Tip:**
 If you’re preparing for the CKA exam, use the same Kubernetes version mentioned in the CNCF exam guide (e.g., `v1.29.x` as of May 2024).
@@ -120,7 +118,7 @@ Kubernetes control plane is running at https://127.0.0.1:63787
 CoreDNS is running at kubernetes-dashboard/kube-system
 ```
 
-![Check Cluster Info](./assets/page-3.jpg)
+![Check Cluster Info](./assets/page-2.jpg)
 
 ---
 
@@ -203,7 +201,7 @@ kind create cluster \
   --image kindest/node:v1.29.4
 ```
 
-![Multi-Node Cluster](./assets/page-4.jpg)
+![Multi-Node Cluster](./assets/page-3.jpg)
 
 Check the nodes:
 
@@ -246,7 +244,7 @@ To switch between clusters:
 kubectl config use-context kind-cka-cluster1
 ```
 
-![Switch Contexts](./assets/page-5.jpg)
+![Switch Contexts](./assets/page-4.jpg)
 
 ---
 
